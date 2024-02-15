@@ -1,12 +1,32 @@
 {% extends "base.html" %}
-<link rel="stylesheet" type="text/css" href="stylesheet.css">
+{% load static %}
 
-{% block title %}Inicio {%endblock %}
-{% block content%}
-<h1>Bienvenido al sistema de regristro de asistencias de clases </h1>
-<p>Este sistema le permitira tomar el control de asistencias de los estudiantes</p>
-{{ ciclo_list }}
-<img src="/imagen/UML-SCA.png"alt="DIAGRAMA UML">
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheet.css' %}">
+
+{% block title %}Inicio{% endblock %}
+{% block content %}
+    <h1>Bienvenido al sistema de registro de asistencias de clases</h1>
+    <p>Este sistema le permitirá tomar el control de asistencias de los estudiantes</p>
+    {{ ciclo_list }}
+    <img src="{% static 'imagen/UML-SCA.png' %}" alt="DIAGRAMA UML">
+
+    <h2>Formulario de Registro de Asistencias</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="estado">Estado:</label><br>
+        <select id="estado" name="estado">
+            <option value="1">Presente</option>
+            <option value="0">Ausente</option>
+        </select><br><br>
+        <label for="fecha">Fecha:</label><br>
+        <input type="date" id="fecha" name="fecha"><br><br>
+        <label for="horario">Horario:</label><br>
+        <select id="horario" name="horario">
+            {% for horario in horarios %}
+                <option value="{{ horario.id }}">{{ horario }}</option>
+            {% endfor %}
+        </select><br><br>
+        <input type="submit" value="Registrar Asistencia">
+    </form>
 {% endblock %}
 ```
-
