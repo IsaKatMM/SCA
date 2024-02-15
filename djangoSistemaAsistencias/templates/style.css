@@ -1,0 +1,13 @@
+/* Estilos para el título */
+h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el párrafo */
+p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
